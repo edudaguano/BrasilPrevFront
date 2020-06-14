@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Área de Acesso</title>
+</h:head>
+
+<h:body>
+	<ui:include src="index.xhtml"></ui:include>
+	<h:form>
+		<p:panel style="font-size:small;position:absolute;top:10%;left:30%">
+		<p:panelGrid  columns="2" styleClass="ui-noborder">
+			<p:outputLabel value="Nome do Filme"/>
+			<p:outputLabel value="Ano de Lançamento"/>
+			<p:inputText value="Placebo" />
+			<p:inputMask value="Placebo"/>
+		</p:panelGrid>
+		<br/>
+		<p:panelGrid  columns="1" styleClass="ui-noborder">
+			<p:outputLabel value="Descrição Resumida"/>
+			<p:inputTextarea  cols="50" rows="3" />
+		</p:panelGrid>
+
+		<br/>
+		<center>
+			<p:commandButton action="#{filmesBean.pesquisar}" value="Pesquisar"  update="@form"/>
+			<p:commandButton action="#{filmesBean.limpar}" style="margin-left:40px" value="Limpar" update="@form"/>
+		</center>
+		</p:panel>
+		
+		<p:panel rendered="#{filmesBean.mostrarGrid}"  style="font-size:small; position:absolute;top:50%">
+		<p:dataTable value="#{filmesBean.listaFilmes}" paginator="true" var="c" rowKey="#{c}" rows="10" emptyMessage="Nenhum filme foi encontrado" 
+		scrollable="true" selection="#{filmesBean.selectedFilme}" style="font-size:small" styleClass="ui-noborder">
+	
+		<p:column selectionMode="single" style="width:20px"/>
+	
+		<p:column headerText="Código">
+			<p:outputLabel value="#{c.id}"/>
+		</p:column>
+
+		<p:column headerText="Nome">
+			<p:outputLabel value="#{c.nome}"/>
+		</p:column>
+
+		<p:column headerText="Ano Lançamento">
+			<p:outputLabel value="#{c.ano}"/>
+		</p:column>
+
+		<p:column headerText="Descrição">
+			<p:outputLabel value="#{c.descricao}"/>
+		</p:column>
+	
+		</p:dataTable>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

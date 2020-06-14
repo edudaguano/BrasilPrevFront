@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: Acompanhamento
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: eduardo.m.daguano
+Implementation-Vendor-Id: Acompanhamento
+Build-Jdk: 1.8.0_211
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
